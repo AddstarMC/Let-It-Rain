@@ -57,8 +57,7 @@ public class LetItRain extends JavaPlugin{
 	private Launcher launcherExec;
 	private RemoveItemsnSlaughter removeItems;
 	private LetItRainHelp lirh;
-	public static int version;
-	
+
 	public static List<EntityType> defaultBlackList;
 		
 	
@@ -70,7 +69,6 @@ public class LetItRain extends JavaPlugin{
 		
 		server.getPluginManager().registerEvents(new Events(), this);
 		
-		version = getBukkitVersion();
 		//Sets blacklist
 		defaultBlackList = new ArrayList<EntityType>();
 		defaultBlackList.add(EntityType.ENDER_DRAGON);
@@ -116,20 +114,7 @@ public class LetItRain extends JavaPlugin{
 	public void onDisable(){
 		log.info(Resources.getPluginTitle() + " disabled");
 	}
-	
-    private int getBukkitVersion(){
-    	String name = Bukkit.getServer().getClass().getPackage().getName();
-		String v = name.substring(name.lastIndexOf('.') + 1) + ".";
-    	String[] version = v.replace('_', '.').split("\\.");
-		
-		int lesserVersion = 0;
-		try {
-			lesserVersion = Integer.parseInt(version[2]);
-		} catch (NumberFormatException ex){				
-		}
-		return Integer.parseInt((version[0]+version[1]).substring(1)+lesserVersion);
-    }
-    
+
 	private void extractCoordinates(){
 		File coordFile = new File("plugins" + File.separator + "LetItRain" + File.separator + "coordinates.yml");
 		coordinates = new LinkedList<Coordinate>();
